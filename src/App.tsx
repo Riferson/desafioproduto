@@ -1,11 +1,11 @@
-import React from 'react';
-import { Produtos } from './screens/Produtos';
-
+import React from "react";
+import { BrowserRouter } from 'react-router-dom';
+import {RoutesNav} from "./routes";
 function App() {
   return (
-  <>
-      <Produtos/>
-  </>
+    <BrowserRouter>
+      <RoutesNav/>
+    </BrowserRouter>
   );
 }
 

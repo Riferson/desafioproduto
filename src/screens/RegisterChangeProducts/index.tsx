@@ -7,13 +7,12 @@ import {Container,Title,FormArea} from './styles';
 export function RegisterChangeProducts(){
     const [file,setFile] = useState('#');
     const {id} = useParams();
+    const [produto,setProduto] = useState<ProductsDTO>();
 
     function handleChange(event:any){
         setFile('../../Images/' + event.target.files[0].name);
         console.log('file',file);
     }
-
-    const [produto,setProduto] = useState<ProductsDTO>();
   
     useEffect(()=>{
       async function fetchProduct() {
@@ -32,11 +31,11 @@ export function RegisterChangeProducts(){
             <Title>Cadastro / Alteração</Title>
             <FormArea>
                 <h4>Produto</h4>
-                <input type='text' value={produto?.nome}></input>
+                <input type='text'></input>
                 <h4>Valor</h4>
-                <input type='number' value={produto?.preco}></input>
+                <input type='number'></input>
                 <h4>Descrição</h4>
-                <input type='text' value={produto?.descricao}></input>
+                <input type='text' value={temp?.descricao}></input>
                 <input type='file' accept="image/png, image/jpeg, image/jpg" onChange={handleChange} />
 
                 <img src={file} alt='teste'/>

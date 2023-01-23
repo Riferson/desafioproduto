@@ -45,7 +45,7 @@ export function Produtos(){
                             <Description>{product.descricao}</Description>
                         </ProductDetails>
                         <ViewDescriptionArea>
-                            <Link to={`ProductDescription/`}>
+                            <Link to={`ProductDescription/${product.id}`}>
                                 <ViewDescription>Visualizar Descrição</ViewDescription>
                             </Link>
                         </ViewDescriptionArea>

@@ -12,24 +12,39 @@ import {
 } from "./styles";
 import { Button } from "../../components/Button";
 import { Link, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+import { ProductsDTO } from "../../dtos/ProductsDTO";
 
 export function ProductDescription() {
   const {id} = useParams();
+  const [produto,setProduto] = useState<ProductsDTO>();
   
+  useEffect(()=>{
+    async function fetchProduct() {
+      try {
+        const response = await api.get(`/Produto/${id}`);
+        setProduto(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchProduct();
+  },[]);
+
   return (
     <Container>
-      <Title>Produto {id}</Title>
+      <Title>{produto?.nome}</Title>
       <ProductDetails>
         <ContentDetails>
             <ProductImageArea>
             <ProductImage src="#" />
             </ProductImageArea>
-            <Value>Valor: R$ 23,50</Value>
+            <Value>Valor: R$ {produto?.preco}</Value>
         </ContentDetails>
         <ProductDescriptionArea>
             <ProductDescriptions>
-            Descrição do produto de forma bem detalhada
+            {produto?.descricao}
             </ProductDescriptions>
         </ProductDescriptionArea>
       </ProductDetails>

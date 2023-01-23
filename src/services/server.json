@@ -1,13 +1,15 @@
 {
     "Produto":[
     {
+        "id":1,
         "idProduto":"01",
         "nome":"Produto1",
-        "descricao":"Descricao do produto",
+        "descricao":"Essa e a descrição do produto 1",
         "preco":23.5,
         "imagem":"https:://"
     },
     {
+        "id":2,
         "idProduto":"02",
         "nome":"Produto2",
         "descricao":"Descricao do produto",

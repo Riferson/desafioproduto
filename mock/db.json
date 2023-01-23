@@ -1,9 +1,0 @@
-{
-    "Produto":{
-        "idProduto":"01",
-        "nome":"Produto1",
-        "descricao":"Descricao do produto",
-        "preco":23.5,
-        "imagem":"https:://"
-    },
-},

@@ -11,6 +11,8 @@ export function RegisterChangeProducts(){
     const [image,SetImage] = useState('#');
     const {id} = useParams();
     const [produto,setProduto] = useState<ProductsDTO>();
+    const [isloading,setIsLoading] = useState(false);
+    const [file,setFile] = useState('#');
   
   const data = {
     idProduto :uuidv4(),
@@ -32,19 +34,23 @@ export function RegisterChangeProducts(){
           SetDescription(produto?.descricao!);
 
           console.log('nome',name,description,valor);
+          setIsLoading(true);
       } catch (error) {
           console.log(error);
       }
     }
     fetchProduct();
     
-  },[]);
+  },[isloading]);
 
 
 
   async function atualizarDados() {
-    if(id! > '0'){
-      
+    if(id! != null && id! !== undefined){
+      console.log(id);
+      const response = await api.delete('/Produto/'+id);
+      await api.post('Produto/',data);
+      console.log('data',data);
      
     }else{
       try {
@@ -57,7 +63,10 @@ export function RegisterChangeProducts(){
     }
   }
 
-    
+  function handleChange(event:any){
+    setFile('../../Images/' + event.target.files[0].name);
+    console.log('file',file);
+}
 
     return(
         <Container>
@@ -69,7 +78,7 @@ export function RegisterChangeProducts(){
                 <input type='number' value={valor} onChange={event => SetValor(Number(event.target.value))}/>
                 <h4>Descrição</h4>
                 <input type='text' value={description} onChange={event =>SetDescription(event.target.value)}/>
-                <input type='file' accept="image/png, image/jpeg, image/jpg" onChange={event => {SetImage(event.target.value)}} />
+                <input type='file' onChange={handleChange}/>
 
                 <img src={`../../Images/${image}`} alt='teste'/>
 

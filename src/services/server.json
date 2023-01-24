@@ -1,21 +1,18 @@
 {
-    "Produto":[
+  "Produto": [
     {
-        "id":1,
-        "idProduto":"01",
-        "nome":"Produto1",
-        "descricao":"Essa e a descrição do produto 1",
-        "preco":23.5,
-        "imagem":"https:://"
+      "id": "51d335ce-a65c-45f1-a240-5e49feae24d3",
+      "descricao": "teste",
+      "imagem": "C:\\fakepath\\demon-slayer-12.jpg",
+      "nome": "Produto1",
+      "preco": 150
     },
     {
-        "id":2,
-        "idProduto":"02",
-        "nome":"Produto2",
-        "descricao":"Descricao do produto",
-        "preco":13.5,
-        "imagem":"https:://"
+      "idProduto": "13707749-42a4-48d2-9bfa-99dff305f972",
+      "descricao": "sddfgergerg",
+      "imagem": "C:\\fakepath\\demon-slayer-12.jpg",
+      "nome": "teste1123",
+      "preco": 1213123
     }
-    ]
-
+  ]
 }

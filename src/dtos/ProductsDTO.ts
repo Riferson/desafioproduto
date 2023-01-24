@@ -1,5 +1,5 @@
 export interface ProductsDTO{
-    id:number,
+    id:string,
     descricao: string,
     idProduto: string,
     imagem:string,

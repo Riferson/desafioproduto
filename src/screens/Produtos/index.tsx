@@ -14,7 +14,6 @@ export function Produtos(){
             try {
                 const response = await api.get('/Produto');
                 setListProducts(response.data);
-                console.log('resposta',response);
             } catch (error) {
                 console.log(error)
             }finally{
@@ -37,7 +36,7 @@ export function Produtos(){
                 {listProducts.map(product=>(
                     <CardProduct>
                         <ImageArea>
-                            <ImageProduct src='#'/>
+                            <ImageProduct src={product.imagem}/>
                         </ImageArea>
                         <ProductDetails>
                             <Name>{product.nome}</Name>
@@ -45,7 +44,7 @@ export function Produtos(){
                             <Description>{product.descricao}</Description>
                         </ProductDetails>
                         <ViewDescriptionArea>
-                            <Link to={`ProductDescription/${product.id}`}>
+                            <Link to={`ProductDescription/${product.idProduto}`}>
                                 <ViewDescription>Visualizar Descrição</ViewDescription>
                             </Link>
                         </ViewDescriptionArea>

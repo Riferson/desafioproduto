@@ -10,15 +10,29 @@ import {
   OptionsButtons,
   ContentDetails,
 } from "./styles";
+
+
+
 import { Button } from "../../components/Button";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { ProductsDTO } from "../../dtos/ProductsDTO";
+import { DeleteModal } from "../../components/DeleteModal";
 
 export function ProductDescription() {
   const {id} = useParams();
   const [produto,setProduto] = useState<ProductsDTO>();
+  const [isDeleteModal,SetIsDeleteModal] = useState(false);
+
+  function handleOpenDeleteModal(){
+    SetIsDeleteModal(true);
+  }
+
+  function handleCloseDeleteModal(){
+    SetIsDeleteModal(false);
+  }
+
   
   useEffect(()=>{
     async function fetchProduct() {
@@ -34,6 +48,7 @@ export function ProductDescription() {
 
   return (
     <Container>
+      <DeleteModal isOpen={isDeleteModal} onRequestClose={handleCloseDeleteModal} id={id}/>
       <Title>{produto?.nome}</Title>
       <ProductDetails>
         <ContentDetails>
@@ -53,7 +68,7 @@ export function ProductDescription() {
         <Link to={`/RegisterChangeProducts/${id}`}>
           <Button title="Editar"/>
         </Link>
-        <Button title="Remover" />
+        <input type='button' value="Remover" onClick={handleOpenDeleteModal}/>
       </OptionsButtons>
     </Container>
   );

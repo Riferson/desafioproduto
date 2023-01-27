@@ -32,7 +32,8 @@ export const ImageArea = styled.div`
     margin-right: 1rem;
 `;
 export const ImageProduct = styled.img`
-
+    width: 8rem;
+    height: 8rem;
 `;
 export const ProductDetails = styled.div`
 

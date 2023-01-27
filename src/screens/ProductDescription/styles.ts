@@ -21,7 +21,8 @@ export const ProductImageArea = styled.div`
     margin:1rem;
 `;
 export const ProductImage = styled.img`
-
+    width: 8rem;
+    height: 8rem;
 `;
 export const Value = styled.p`
 

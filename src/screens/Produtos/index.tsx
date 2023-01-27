@@ -5,23 +5,43 @@ import {Container,Title,InputsArea,ListProduct,CardProduct,ImageArea,ImageProduc
 import {api} from '../../services/api';
 import { ProductsDTO } from "../../dtos/ProductsDTO";
 
+
 export function Produtos(){
     const [listProducts,setListProducts] = useState<ProductsDTO[]>([]);
+    const [listagem,setListagem] = useState<ProductsDTO[]>([]);
     const [loading,setLoading] = useState<Boolean>(true);
+    const [search,setSearch]=useState<string>('');
+
+    async function fetchProducts(){
+        try {
+            const response = await api.get('/Produto');
+            setListProducts(response.data);
+        } catch (error) {
+            console.log(error)
+        }finally{
+            setLoading(false);
+        }
+    }
 
     useEffect(()=>{
-        async function fetchProducts(){
-            try {
-                const response = await api.get('/Produto');
-                setListProducts(response.data);
-            } catch (error) {
-                console.log(error)
-            }finally{
-                setLoading(false);
-            }
+        setLoading(false);
+        if(loading){
+            fetchProducts();
+            setLoading(true);
         }
-        fetchProducts();
-    },[]);
+        if(search === ''){
+            fetchProducts();
+            setListagem(listProducts);
+        }else{
+            setListagem(listProducts.filter((item)=>{
+                if(item.nome.indexOf(search)>-1){
+                    return true;
+                }else{
+                    return false;
+                }
+            }))
+        }
+    },[search,loading]);
 
     return(
         <Container>
@@ -30,13 +50,13 @@ export function Produtos(){
                 <Link to={"/RegisterChangeProducts"}>
                     <Button title='Cadastrar novo Produto'/>
                 </Link>
-                <input type='search' placeholder="Pesquise seus produtos"></input>
+                <input type='search' value={search} placeholder="Pesquise seus produtos" onChange={(event) => setSearch(event.target.value)}></input>
             </InputsArea>
             <ListProduct>
-                {listProducts.map(product=>(
+                {listagem.map(product=>(
                     <CardProduct>
                         <ImageArea>
-                            <ImageProduct src={product.imagem}/>
+                            <ImageProduct src={"https://www.actbus.net/fleetwiki/images/8/84/Noimage.jpg"}/>
                         </ImageArea>
                         <ProductDetails>
                             <Name>{product.nome}</Name>

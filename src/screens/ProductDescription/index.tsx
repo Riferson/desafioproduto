@@ -53,7 +53,7 @@ export function ProductDescription() {
       <ProductDetails>
         <ContentDetails>
             <ProductImageArea>
-            <ProductImage src="#" />
+            <ProductImage src={"https://www.actbus.net/fleetwiki/images/8/84/Noimage.jpg"} />
             </ProductImageArea>
             <Value>Valor: R$ {produto?.preco}</Value>
         </ContentDetails>

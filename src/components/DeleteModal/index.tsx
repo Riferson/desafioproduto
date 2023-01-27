@@ -19,6 +19,7 @@ export function DeleteModal({isOpen,onRequestClose,id}:DeleteModalProps){
     async function DeleteProduct(){
         try {
              const response = await api.delete('/Produto/'+ id);
+  
         } catch (error) {
             console.log(error);
         }

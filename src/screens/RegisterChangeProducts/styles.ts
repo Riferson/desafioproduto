@@ -18,3 +18,13 @@ export const FormArea = styled.div`
         margin-bottom: 1rem;
     }
 `;
+
+export const ImgPreview = styled.img`
+    margin: 1rem 0;
+    width: 5rem;
+    height: 5rem;
+`;
+export const Save = styled.input`
+    font-size: 2rem;
+    border-radius:5px;
+`;
